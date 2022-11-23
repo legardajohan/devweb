@@ -10,7 +10,7 @@ import Conocenos from './presentation/Conocenos';
 const Main = () => {
     return (
         <Routes>
-            <Route path="/" element={<Home />}></Route>
+            <Route path="/devweb" element={<Home />}></Route>
             <Route path="/createBook" element={<CreateBooks />}></Route>
             <Route path="/editBook" element={<EditBooks />}></Route>
             <Route path="/listBook" element={<ListBooks />}></Route>
