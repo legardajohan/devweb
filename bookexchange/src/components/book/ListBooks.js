@@ -17,22 +17,30 @@ const ListBooks = () => {
       });
     }
   }, [isLoading]);
-  console.log(books);
 
   return (
+
+
     <div className="container mt-4">
       <h3>Listado de libros</h3>
+      {isLoading && books.length === 0 && <h5>Cargarndo libros...</h5>}
       <div className="row justify-content-center contenedor">
-        <div className="card shadow-lg m-2 p-0" style={{width: '14rem', height: '19rem'}}>
-          <img src="https://ecat-server.grupo-sm.com/ecat_Imagenes/Original/209623_279253.jpg" className="rounded-lg"
-            style={{width: '14rem', height: '19rem'}} alt="..." />
-          <div className="capa p-3">
-            <h5>El Principito</h5>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsa maiores sit, sed praesentium soluta
-              temporibus.</p>
-            <button className="btn btn-outline-light btn-sm btn-sol" type="submit">Solicitar</button>
-          </div>
-        </div>
+        {!isLoading &&
+          books.map((book, id) => (
+
+            <div key={id} className="card shadow-lg m-2 p-0" style={{ width: '14rem', height: '19rem' }} key={book}>
+              <img src={book.front} className="rounded-lg"
+                style={{ width: '14rem', height: '19rem' }} alt="" />
+              <div className="capa p-3">
+                <h5>{book.title}</h5>
+                <p>{book.author}, {book.date.substr(6, 9)}</p>
+                <p><em>Género: {book.gender}</em></p>
+                <button className="btn btn-outline-light btn-sm btn-sol" type="submit">Solicitar</button>
+              </div>
+            </div>
+
+          ))
+        }
       </div>
     </div>
   );
